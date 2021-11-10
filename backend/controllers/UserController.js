@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const User = require('../models/User');
 
 module.exports = class UserController {
@@ -69,6 +70,29 @@ module.exports = class UserController {
         message: 'E-mail já cadastrado. Utilize outro e-mail'
       });
       return;
+    }
+
+    // Create a password
+    const salt = await bcrypt.genSalt(12);
+    const passwordHash = await bcrypt.hash(password, salt);
+
+    // Create a user
+    const user = new User({
+      name,
+      email,
+      phone,
+      password: passwordHash
+    });
+
+    try {
+      const newUser = await user.save();
+      res.status(200)
+      .json({
+        message: 'Usuário criado!',
+        newUser
+      });
+    } catch(error) {
+      res.status(500).json({message: error});
     }
   }
 }

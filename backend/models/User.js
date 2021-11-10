@@ -24,7 +24,7 @@ const User = mongoose.model(
       required: true
     }
   },
-  { timestamp: true})
+  { timestamps: true})
 );
 
 module.exports = User;

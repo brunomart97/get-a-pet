@@ -174,11 +174,20 @@ module.exports = class UserController {
     if(!user) {
       res.status(422)
       .json({
-        message: 'SUsuário não encontrado!'
+        message: 'Usuário não encontrado!'
       });
       return;
     }
 
     res.status(200).json({ user });
+  }
+
+  // Edit users
+  static async editUser(req, res) {
+    res.status(200)
+    .json({
+      message: 'Update realizado com sucesso!'
+    });
+    return;
   }
 }

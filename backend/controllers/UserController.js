@@ -1,7 +1,10 @@
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
+// Helpers
 const createUserToken = require('../helpers/CreateUserToken');
+const getToken = require('../helpers/getToken');
 
 module.exports = class UserController {
   // Register
@@ -143,5 +146,23 @@ module.exports = class UserController {
     }
 
     await createUserToken(user, req, res);
+  }
+
+  // Checking user
+  static async checkUser(req, res) {
+    let currentUser;
+
+    if(req.headers.authorization) {
+      const token = getToken(req);
+      const decodedToken = jwt.verify(token, "mysecret");
+
+      currentUser = await User.findById(decodedToken.id);
+
+      currentUser.password = undefined;
+    } else {
+      currentUser = null;
+    }
+
+    res.status(200).send(currentUser);
   }
 }

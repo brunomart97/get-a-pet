@@ -1,6 +1,8 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 
+const createUserToken = require('../helpers/CreateUserToken');
+
 module.exports = class UserController {
   static async register(req, res) {
     const {
@@ -86,11 +88,8 @@ module.exports = class UserController {
 
     try {
       const newUser = await user.save();
-      res.status(200)
-      .json({
-        message: 'Usuário criado!',
-        newUser
-      });
+      
+      await createUserToken(newUser, req, res);
     } catch(error) {
       res.status(500).json({message: error});
     }

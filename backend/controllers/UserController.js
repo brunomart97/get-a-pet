@@ -198,7 +198,11 @@ module.exports = class UserController {
       password,
       confirmPassword
     } = req.body;
-    let image = '';
+
+    // Image
+    if(req.file) {
+      user.image = req.file.filename;
+    }
 
     // Validations
     if(!name) {

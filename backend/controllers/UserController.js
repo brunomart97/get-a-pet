@@ -22,7 +22,7 @@ module.exports = class UserController {
     if(!name) {
       res.status(422)
       .json({
-        message: 'O nome é obrigatório'
+        message: 'O nome é obrigatório!'
       });
       return;
     }
@@ -30,7 +30,7 @@ module.exports = class UserController {
     if(!email) {
       res.status(422)
       .json({
-        message: 'O e-mail é obrigatório'
+        message: 'O e-mail é obrigatório!'
       });
       return;
     }
@@ -38,7 +38,7 @@ module.exports = class UserController {
     if(!phone) {
       res.status(422)
       .json({
-        message: 'O telefone é obrigatório'
+        message: 'O telefone é obrigatório!'
       });
       return;
     }
@@ -46,7 +46,7 @@ module.exports = class UserController {
     if(!password) {
       res.status(422)
       .json({
-        message: 'A senha é obrigatória'
+        message: 'A senha é obrigatória!'
       });
       return;
     }
@@ -54,7 +54,7 @@ module.exports = class UserController {
     if(!confirmPassword) {
       res.status(422)
       .json({
-        message: 'A confirmação de senha é obrigatória'
+        message: 'A confirmação de senha é obrigatória!'
       });
       return;
     }
@@ -63,7 +63,7 @@ module.exports = class UserController {
     if(password !== confirmPassword) {
       res.status(422)
       .json({
-        message: 'A senha e a confirmação de senha precisam ser iguais'
+        message: 'A senha e a confirmação de senha precisam ser iguais!'
       });
       return;
     }
@@ -74,7 +74,7 @@ module.exports = class UserController {
     if(userExist) {
       res.status(422)
       .json({
-        message: 'E-mail já cadastrado. Utilize outro e-mail'
+        message: 'E-mail já cadastrado. Utilize outro e-mail!'
       });
       return;
     }
@@ -95,6 +95,7 @@ module.exports = class UserController {
       const newUser = await user.save();
       
       await createUserToken(newUser, req, res);
+      
     } catch(error) {
       res.status(500).json({message: error});
     }
@@ -111,7 +112,7 @@ module.exports = class UserController {
     if(!email) {
       res.status(422)
       .json({
-        message: 'O e-mail é obrigatório'
+        message: 'O e-mail é obrigatório!'
       });
       return;
     }
@@ -119,7 +120,7 @@ module.exports = class UserController {
     if(!password) {
       res.status(422)
       .json({
-        message: 'A senha é obrigatória'
+        message: 'A senha é obrigatória!'
       });
       return;
     }
@@ -208,7 +209,7 @@ module.exports = class UserController {
     if(!name) {
       res.status(422)
       .json({
-        message: 'O nome é obrigatório'
+        message: 'O nome é obrigatório!'
       });
       return;
     }
@@ -218,7 +219,7 @@ module.exports = class UserController {
     if(!email) {
       res.status(422)
       .json({
-        message: 'O e-mail é obrigatório'
+        message: 'O e-mail é obrigatório!'
       });
       return;
     }
@@ -239,7 +240,7 @@ module.exports = class UserController {
     if(!phone) {
       res.status(422)
       .json({
-        message: 'O telefone é obrigatório'
+        message: 'O telefone é obrigatório!'
       });
       return;
     }

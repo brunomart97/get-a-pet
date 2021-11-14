@@ -14,6 +14,8 @@ module.exports = class PetController {
       color
     } = req.body;
 
+    const images = req.files;
+
     const available = true;
 
     // Images upload
@@ -51,6 +53,14 @@ module.exports = class PetController {
       return;
     }
 
+    if(images.length === 0) {
+      res.status(422)
+      .json({
+        message: 'A imagem é obrigatório!'
+      });
+      return;
+    }
+    
     // Get pet owner
     const token = getToken(req);
     const user = await getUserByToken(token);
@@ -71,6 +81,10 @@ module.exports = class PetController {
       }
     });
 
+    images.map((image) => {
+      pet.images.push(image.filename);
+    });
+    
     try {
       const newPet = await pet.save();
       

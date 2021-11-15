@@ -208,4 +208,105 @@ module.exports = class PetController {
     });
     return;
   }
+
+  // Update pet
+  static async updatePet(req, res) {
+    const id = req.params.id;
+
+    const {
+      name,
+      age,
+      weight,
+      color,
+      available
+    } = req.body;
+
+    const images = req.files;
+
+    const updatedData = {};
+
+    // check if pet exists
+    const pet = await Pet.findOne({_id: id});
+
+    if(!pet) {
+      res.status(404)
+      .json({
+        message: 'Pet não encontrado!'
+      });
+      return;
+    }
+
+    // Check if logged in user registered the pet
+    const token = getToken(req);
+    const user = await getUserByToken(token);
+
+    if(pet.user._id.toString() !== user._id.toString()) {
+      res.status(422)
+      .json({
+        message: 'Houve um problema em processar a sua solicitação. Tente novamente mais tarde!'
+      });
+      return;
+    }
+
+    // Validations
+    if(!name) {
+      res.status(422)
+      .json({
+        message: 'O nome é obrigatório!'
+      });
+      return;
+    } else {
+      updatedData.name = name;
+    }
+
+    if(!age) {
+      res.status(422)
+      .json({
+        message: 'A idade é obrigatório!'
+      });
+      return;
+    } else {
+      updatedData.age = age;
+    }
+
+    if(!weight) {
+      res.status(422)
+      .json({
+        message: 'O peso é obrigatório!'
+      });
+      return;
+    } else {
+      updatedData.weight = weight;
+    }
+
+    if(!color) {
+      res.status(422)
+      .json({
+        message: 'A cor é obrigatório!'
+      });
+      return;
+    } else {
+      updatedData.color = color;
+    }
+
+    if(images.length === 0) {
+      res.status(422)
+      .json({
+        message: 'A imagem é obrigatório!'
+      });
+      return;
+    } else {
+      updatedData.images = [];
+
+      images.map((image) => {
+        updatedData.images.push(image.filename);
+      })
+    }
+
+    await Pet.findByIdAndUpdate(id, updatedData);
+    res.status(200)
+    .json({
+      message: 'Pet atualizado com sucesso!'
+    });
+  }
 }

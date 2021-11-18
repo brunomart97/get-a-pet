@@ -12,7 +12,7 @@ app.use(express.json());
 // Solve CORS
 app.use(cors({
   credentials: true,
-  origin: 'https://localhost:3000'
+  origin: 'http://localhost:3000'
 }));
 
 // Public folder for images

@@ -8,6 +8,7 @@ import {
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Container from './components/layout/Container';
+import Message from './components/layout/Message';
 
 // Pages
 import Login from './pages/Auth/Login';
@@ -22,6 +23,7 @@ function App() {
     <Router>
       <UseProvider>
         <Navbar />
+        <Message />
         <Container>
           <Switch>
             <Route path="/login">

@@ -1,0 +1,16 @@
+.message {
+  width: 1200px;
+  margin: 10px auto;
+  padding: 0.3em 0.5em;
+  border-radius: 5px;
+}
+
+.success {
+  background-color: #1ad48e;
+  color: #fff;
+}
+
+.error {
+  background-color: #f14848;
+  color: #fff;
+}

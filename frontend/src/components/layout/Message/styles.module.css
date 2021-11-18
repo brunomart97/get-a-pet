@@ -1,6 +1,6 @@
 .message {
   width: 1200px;
-  margin: 10px auto;
+  margin: 15px auto 0 auto;
   padding: 0.3em 0.5em;
   border-radius: 5px;
 }
@@ -11,6 +11,6 @@
 }
 
 .error {
-  background-color: #f14848;
+  background-color: #f35b5b;
   color: #fff;
 }

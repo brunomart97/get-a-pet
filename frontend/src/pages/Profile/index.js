@@ -11,6 +11,7 @@ function Profile() {
   const [user, setUser] = useState({});
   const [token] = useState(localStorage.getItem('token') || '');
   const {setFlashMessage} = useFlashMessage();
+  const [preview, setPreview] = useState();
 
   useEffect(() => {
     api.get('/users/checkuser', {
@@ -24,6 +25,7 @@ function Profile() {
   }, [token]);
 
   function onFileChange(e) {
+    setPreview(e.target.files[0]);
     setUser({ ...user, [e.target.name]: e.target.files[0] });
   }
 
@@ -61,7 +63,9 @@ function Profile() {
   return(
     <section>
       <h1 className={styles.title}>Perfil</h1>
-      <p>Preview imagem</p>
+      {(user.image || preview) && (
+        <img src={preview ? URL.createObjectURL(preview) : `${process.env.REACT_APP_API}/images/users/${user.image}`} alt={user.name} />
+      )}
       <form onSubmit={handleSubmit}>
         <Input
           text="Imagem"

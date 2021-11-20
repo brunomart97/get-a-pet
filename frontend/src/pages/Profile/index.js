@@ -4,6 +4,7 @@ import api from '../../utils/api';
 import styles from './styles.module.css';
 
 import Input from '../../components/Input';
+import RoundedImage from '../../components/RoundedImage';
 
 import useFlashMessage from '../../hooks/useFlashMessage';
 
@@ -64,7 +65,11 @@ function Profile() {
     <section>
       <h1 className={styles.title}>Perfil</h1>
       {(user.image || preview) && (
-        <img src={preview ? URL.createObjectURL(preview) : `${process.env.REACT_APP_API}/images/users/${user.image}`} alt={user.name} />
+        <RoundedImage
+          src={preview ? URL.createObjectURL(preview) : `${process.env.REACT_APP_API}/images/users/${user.image}`}
+          alt={user.name}
+          marginBottom="mb20"
+        />
       )}
       <form onSubmit={handleSubmit}>
         <Input

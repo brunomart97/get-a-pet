@@ -6,6 +6,17 @@ import useFlashMessage from './useFlashMessage';
 
 export default function useAuth() {
   const { setFlashMessage } = useFlashMessage();
+  const [authenticate, setAuthenticate] = useState(false);
+  const history = useHistory();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    if(token) {
+      api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`;
+      setAuthenticate(true);
+    }
+  }, []);
 
   async function register(user) {
     let msgText = 'Cadastro realizado com sucesso!';
@@ -17,7 +28,7 @@ export default function useAuth() {
         return response.data;
       })
 
-      console.log(data);
+      await authUser(data);
     } catch (error) {
       msgText = error.response.data.message;
       msgType = 'error';
@@ -26,5 +37,13 @@ export default function useAuth() {
     setFlashMessage(msgText, msgType);
   }
 
-  return { register };
+  async function authUser(data) {
+    setAuthenticate(true);
+
+    localStorage.setItem('token', JSON.stringify(data.token));
+
+    history.push('/');
+  }
+
+  return { register, authenticate };
 }

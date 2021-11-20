@@ -27,6 +27,9 @@ function Navbar() {
           </li>
           {authenticate ? (
             <>
+              <li>
+                <Link to="/user/profile">Perfil</Link>
+              </li>
               <li onClick={logout} className={styles.logout}>
                 Sair
               </li>

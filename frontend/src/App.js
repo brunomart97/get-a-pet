@@ -16,6 +16,7 @@ import Register from './pages/Auth/Register';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import MyPets from './pages/MyPets';
+import AddPet from './pages/AddPet';
 
 // Context
 import { UseProvider } from './context/UserContext';
@@ -36,6 +37,9 @@ function App() {
             </Route>
             <Route path="/pet/mypets">
               <MyPets />
+            </Route>
+            <Route path="/pet/add">
+              <AddPet />
             </Route>
             <Route path="/user/profile">
               <Profile />

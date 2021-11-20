@@ -9,7 +9,7 @@ import Logo from '../../../assets/img/logo.png';
 import { Context } from '../../../context/UserContext';
 
 function Navbar() {
-  const { authenticate } = useContext(Context);
+  const { authenticate, logout } = useContext(Context);
 
   return(
     <nav className={styles.navbar}>
@@ -27,7 +27,9 @@ function Navbar() {
           </li>
           {authenticate ? (
             <>
-              <p>Logado</p>
+              <li onClick={logout} className={styles.logout}>
+                Sair
+              </li>
             </>
           ) : (
             <>

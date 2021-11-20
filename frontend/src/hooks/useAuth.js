@@ -45,5 +45,17 @@ export default function useAuth() {
     history.push('/');
   }
 
-  return { register, authenticate };
+  function logout() {
+    const msgText = 'Logout realizado com sucesso!';
+    const msgType = 'success';
+
+    setAuthenticate(false);
+    localStorage.removeItem('token');
+    api.defaults.headers.Authorization = undefined;
+    history.push('/');
+
+    setFlashMessage(msgText, msgType);
+  }
+
+  return { register, authenticate, logout };
 }

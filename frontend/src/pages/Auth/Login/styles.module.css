@@ -1,0 +1,32 @@
+.title {
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.buttonSubmit {
+  border: none;
+  padding: 0.5em 1.5em;
+  font-size: 1em;
+  background-color: #1ad48e;
+  color: #fff;
+  border-radius: 5px;
+  margin-top: .5em;
+  cursor: pointer;
+}
+
+.buttonSubmit:hover {
+  background-color: #18c985;
+}
+
+.linkBottom {
+  margin-top: 1.2em;
+  font-size: .8em;
+}
+
+.linkBottom a {
+  color: #1ad48e;
+}
+
+.linkBottom a:hover {
+  color: #18c985;
+}

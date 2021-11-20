@@ -9,14 +9,22 @@ import Input from '../../../components/Input';
 import { Context } from '../../../context/UserContext';
 
 function Login() {
+  const [user, setUser] = useState({});
+  const {login} = useContext(Context);
+
   function handleChange(e) {
-    
+    setUser({ ...user, [e.target.name]: e.target.value });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    login(user);
   }
 
   return(
     <section>
       <h1 className={styles.title}>Login</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <Input
           text="E-mail"
           type="email"

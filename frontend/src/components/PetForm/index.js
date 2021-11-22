@@ -21,11 +21,11 @@ function PetForm({
   }
   
   function handleChange(e) {
-    setPet({...pet, [e.target.name]: [...e.target.value]});
+    setPet({...pet, [e.target.name]: e.target.value});
   }
   
   function handleColor(e) {
-    setPet({...pet, color: [...e.target.options[e.target.selectedIndex].text]});
+    setPet({...pet, color: e.target.options[e.target.selectedIndex].text});
   }
 
   function submit(e) {

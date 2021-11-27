@@ -1,0 +1,86 @@
+.containerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.title {
+  font-size: 2em;
+  font-weight: 600;
+  margin-bottom: 0.2em;
+}
+
+.buttonAddLink,
+.concludeButton {
+  border: none;
+  padding: 0.5em 1.5em;
+  font-size: 1em;
+  background-color: #1ad48e;
+  color: #fff;
+  border-radius: 5px;
+  margin-top: .5em;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.buttonAddLink:hover,
+.concludeButton:hover {
+  background-color: #18c985;
+}
+
+.petListContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.petListRow {
+  padding: .8em;
+  margin: 1em 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color:#f5f5f7;
+  border-radius: 5em 5px 5px 5em;
+}
+
+.petListRow img {
+  margin-right: 1em;
+}
+
+.petListRow span {
+  min-width: 100px;
+}
+
+.actions {
+  margin-left: auto;
+}
+
+.editButton,
+.deleteButton {
+  border: none;
+  padding: 0.5em 1.5em;
+  font-size: 1em;
+  color: #fff;
+  border-radius: 5px;
+  margin-top: .5em;
+  margin-left: 1em;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.editButton {
+  background-color:#c0c0c0;
+}
+
+.editButton:hover {
+  background-color:#a8a8a8;
+}
+
+.deleteButton {
+  background-color: #f35b5b;
+}
+
+.deleteButton:hover {
+  background-color: #eb4c4c;
+}

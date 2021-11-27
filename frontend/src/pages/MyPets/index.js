@@ -26,26 +26,34 @@ function MyPets() {
 
   return(
     <section>
-      <h1>MyPets</h1>
-      <Link to="/pet/add">Cadastrar Pet</Link>
-      <div>
+      <div className={styles.containerHeader}>
+        <h1 className={styles.title}>Meus Pets</h1>
+        <Link
+          to="/pet/add"
+          className={styles.buttonAddLink}
+        >Cadastrar Pet</Link>
+      </div>
+      <div className={styles.petListContainer}>
         {pets.length > 0 && 
           pets.map((pet) => (
-            <div key={pet.id}>
+            <div key={pet.id} className={styles.petListRow}>
               <RoundedImage
                 src={`${process.env.REACT_APP_API}/images/pets/${pet.images[0]}`}
                 alt={pet.name}
-                width="75px"
+                width="px75"
               />
               <span className="bold">{pet.name}</span>
-              <div className={styles.action}>
+              <div className={styles.actions}>
                 {pet.available ? (
                   <>
                     {pet.adopter && (
-                      <button>Concluir adoção</button>
+                      <button className={styles.concludeButton}>Concluir adoção</button>
                     )}
-                    <Link to={`/pet/edit/${pet._id}`}>Editar</Link>
-                    <button>Excluir</button>
+                    <Link
+                      to={`/pet/edit/${pet._id}`}
+                      className={styles.editButton}
+                    >Editar</Link>
+                    <button className={styles.deleteButton}>Excluir</button>
                   </>
                 ) : (
                   <p>Pet já adotado</p>

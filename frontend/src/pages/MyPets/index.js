@@ -11,7 +11,7 @@ import useFlashMessage from '../../hooks/useFlashMessage';
 function MyPets() {
   const [pets, setPets] = useState([]);
   const [token] = useState(localStorage.getItem('token') || '');
-  const {setFlashMessage} = useState();
+  const {setFlashMessage} = useFlashMessage();
 
   useEffect(() => {
     api.get('/pets/mypets', {
@@ -23,6 +23,27 @@ function MyPets() {
       setPets(response.data.pets);
     })
   }, [token]);
+
+  async function removePet(id) {
+    let msgType = 'success';
+
+    const data = await api.delete(`/pets/${id}`, {
+      headers: {
+        Authorization: `Bearer ${JSON.parse(token)}`
+      }
+    })
+    .then((response) => {
+      const updatedPets = pets.filter((pet) => pet._id != id);
+      setPets(updatedPets);
+
+      return response.data;
+    }) .catch((error) => {
+      msgType = 'error';
+      return error.response.data;
+    });
+
+    setFlashMessage(data.message, msgType);
+  }
 
   return(
     <section>
@@ -53,7 +74,12 @@ function MyPets() {
                       to={`/pet/edit/${pet._id}`}
                       className={styles.editButton}
                     >Editar</Link>
-                    <button className={styles.deleteButton}>Excluir</button>
+                    <button
+                      className={styles.deleteButton}
+                      onClick={() => {
+                        removePet(pet._id);
+                      }}
+                    >Excluir</button>
                   </>
                 ) : (
                   <p>Pet já adotado</p>

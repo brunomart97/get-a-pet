@@ -16,7 +16,7 @@ function EditPet() {
 
   useEffect(() => {
     api.get(`/pets/${id}`, {
-     Authorization: `Bearer ${JSON.parse(token)}` 
+      Authorization: `Bearer ${JSON.parse(token)}`
     })
     .then((response) => {
       setPet(response.data.pet)
@@ -24,7 +24,33 @@ function EditPet() {
   }, [token, id]);
 
   async function updatePet(pet) {
+    let msgType = 'success';
+    const formData = new FormData();
 
+    await Object.keys(pet).forEach((key) => {
+      if(key === 'images') {
+        for(let i = 0; i < pet[key].length; i++) {
+          formData.append('images', pet[key][i]);
+        }
+      } else {
+        formData.append(key, pet[key])
+      }
+    });
+
+    const data = await api.patch(`pets/${pet._id}`, formData, {
+      headers: {
+        Authorization: `Bearer ${JSON.parse(token)}`,
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+    .then((response) => {
+      return response.data;
+    }) .catch((error) => {
+      msgType = 'error';
+      return error.response.data;
+    });
+
+    setFlashMessage(data.message, msgType);
   }
 
   return(

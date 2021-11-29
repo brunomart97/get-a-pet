@@ -17,7 +17,7 @@ function Home() {
 
   return(
     <section>
-      <h1 className={styles.title}>Home</h1>
+      <h1 className={styles.title}>Pets</h1>
       <p>Veja os detalhes de cada um e conheça o tutor deles.</p>
       <div className={styles.petContainer}>
         {pets.length > 0 && (

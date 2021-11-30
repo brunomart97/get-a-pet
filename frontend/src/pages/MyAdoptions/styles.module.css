@@ -1,0 +1,41 @@
+.title {
+  font-size: 2em;
+  font-weight: 600;
+  margin-bottom: 0.2em;
+}
+
+.petListContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.petListRow {
+  padding: .8em;
+  margin: 1em 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color:#f5f5f7;
+  border-radius: 5em 5px 5px 5em;
+}
+
+.petListRow img {
+  margin-right: 1em;
+}
+
+.petListRow span {
+  min-width: 100px;
+}
+
+.petName {
+  color: #1ad48e;
+}
+
+.actions {
+  margin-left: auto;
+}
+
+.actions p {
+  font-weight: 500;
+  color: #453a97;
+}

@@ -56,6 +56,11 @@
   margin-left: auto;
 }
 
+.actions p {
+  font-weight: 500;
+  color: #453a97;
+}
+
 .editButton,
 .deleteButton {
   border: none;

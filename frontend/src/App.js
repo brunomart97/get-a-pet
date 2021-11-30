@@ -19,6 +19,7 @@ import MyPets from './pages/MyPets';
 import AddPet from './pages/AddPet';
 import EditPet from './pages/EditPet';
 import PetDetails from './pages/PetDetails';
+import MyAdoptions from './pages/MyAdoptions';
 
 // Context
 import { UseProvider } from './context/UserContext';
@@ -48,6 +49,9 @@ function App() {
             </Route>
             <Route path="/pet/edit/:id">
               <EditPet />
+            </Route>
+            <Route path="/pet/myadoptions">
+              <MyAdoptions />
             </Route>
             <Route path="/pet/:id">
               <PetDetails />

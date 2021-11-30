@@ -12,6 +12,10 @@
   margin-bottom: 1em;
 }
 
+.petDetailsContainer p a {
+  color: #1ad48e;
+}
+
 .petImages {
   display: flex;
   justify-content: flex-start;

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import api from '../../utils/api';
 
 import styles from './styles.module.css';
@@ -12,7 +12,7 @@ import PetForm from '../../components/PetForm';
 function AddPet() {
   const [token] = useState(localStorage.getItem('token') || '');
   const {setFlashMessage} = useFlashMessage();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   async function registerPet(pet) {
     let msgType = 'success';
@@ -43,7 +43,7 @@ function AddPet() {
     setFlashMessage(data.message, msgType);
     
     if(msgType !== 'error') {
-      history.push('/pets/mypets');
+      navigate('/pets/mypets');
     }
   }
 

@@ -37,7 +37,7 @@ function MyPets() {
       setPets(updatedPets);
 
       return response.data;
-    }) .catch((error) => {
+    }).catch((error) => {
       msgType = 'error';
       return error.response.data;
     });
@@ -55,7 +55,7 @@ function MyPets() {
     })
     .then((response) => {
       return response.data;
-    }) .catch((error) => {
+    }).catch((error) => {
       msgType = 'error';
       return error.response.data;
     });

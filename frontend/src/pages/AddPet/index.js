@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../utils/api';
 
@@ -17,7 +17,7 @@ function AddPet() {
   async function registerPet(pet) {
     let msgType = 'success';
 
-    const formData = new FormData;
+    const formData = new FormData();
 
     await Object.keys(pet).forEach((key) => {
       if(key === 'images') {

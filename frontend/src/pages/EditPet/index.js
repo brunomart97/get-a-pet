@@ -45,7 +45,7 @@ function EditPet() {
     })
     .then((response) => {
       return response.data;
-    }) .catch((error) => {
+    }).catch((error) => {
       msgType = 'error';
       return error.response.data;
     });
